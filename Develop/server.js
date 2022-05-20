@@ -24,7 +24,7 @@ app.post("/api/notes", (req, res) =>{
 
         notes.push(newNote);
 
-        fs.writeFileSync(path.join(__dirname, './db/db.json'), JSON.stringify(notes), (err, data) =>{
+        fs.writeFile(path.join(__dirname, './db/db.json'), JSON.stringify(notes), (err, data) =>{
             res.json(newNote)
         });
 
@@ -49,13 +49,13 @@ app.get("/api/notes", (req, res) =>{
     });
 });
 
-app.get("/", (req, res) =>{
-    res.sendFile(path.join(__dirname, './public/index.html' ))
-})
-
 app.get("/notes", (req, res) =>{
     res.sendFile(path.join(__dirname, "public", "notes.html"))
 });
+
+app.get("/", (req, res) =>{
+    res.sendFile(path.join(__dirname, './public/index.html' ))
+})
 
 app.get("*", (req, res) =>{
     res.sendFile(path.join(__dirname, './public/index.html'))
