@@ -37,7 +37,7 @@ app.post("/api/notes", (req, res) =>{
 // Delete request to delete note
 // Should receive a query paramater containing the ID of a note to delete. read all notes from db.json file, remove the note with the given id property then rewrite the notes to the db.json file.
 app.delete("/api/notes/:id", (req, res) =>{
-    let deleteId = parseInt(req.params.id);
+    let deleteId = (req.params.id);
 
     for(let i = 0; i < notes.length; i++){
         if (deleteId === notes[i].id){
